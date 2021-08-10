@@ -1,0 +1,18 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html > body,
+html > body .toastui-editor-contents {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.toastui-editor-contents dir,
+.toastui-editor-contents menu,
+.toastui-editor-contents ol,
+.toastui-editor-contents ul {
+  margin-top:12px;
+}

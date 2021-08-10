@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{usr/common/layout}">
+<head>
+  <title>Ken 생성</title>
+</head>
+
+<main layout:fragment="main">
+  <script>
+    let KenWrite__submitDone = false;
+    function KenWrite__submit() {
+      const form = document['ken-write-form'];
+      if ( KenWrite__submitDone ) {
+        return;
+      }
+
+      const bodyEditor = $(form).find('.toast-ui-editor--body').data('data-toast-editor');
+
+      const source = bodyEditor.getMarkdown().trim();
+      const result = bodyEditor.getHTML().trim();
+
+      if ( source.length == 0 ) {
+        bodyEditor.focus();
+        alert('내용을 입력해주세요.');
+        return;
+      }
+
+      KenWrite__submitDone = true;
+
+      form.source.value = source;
+      form.result.value = result;
+
+      form.submit();
+    }
+  </script>
+  <form name="ken-write-form" th:action="${ken == null ? '/ken/doWrite' : '/ken/doModify'}" method="POST" onsubmit="KenWrite__submit(); return false;"
+        class="h-full flex flex-col">
+    <input type="hidden" name="id" th:value="${ken != null ? ken.id : 0}">
+    <input type="hidden" name="source">
+    <input type="hidden" name="result">
+    <div class="flex-grow">
+      <div class="toast-ui-editor toast-ui-editor--body h-full" data-toast-editor-height="100%;"
+           data-toast-editor-placeholder="note ..">
+        <script th:if="${ken != null}" type="text/x-template">
+[(${ken.source})]
+        </script>
+        <script th:unless="${ken != null}" type="text/x-template">
+$$config
+title: New Title
+keywords:
+  - IT
+  - ...
+$$
+
+# Subject 1
+        </script>
+      </div>
+    </div>
+  </form>
+</main>
+</html>
