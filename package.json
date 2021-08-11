@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/kjh0816/wiken/issues"
   },
-  "homepage": "https://github.com/kjh0816/wiken#readme"
+  "homepage": "https://github.com/kjh0816/wiken#readme",
+  "dependencies": {
+    "@stablelib/sha512": "^1.0.1"
+  }
 }

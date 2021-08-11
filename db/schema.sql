@@ -36,13 +36,13 @@ CREATE TABLE `member` (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    loginId CHAR(20) NOT NULL,
-    loginPw CHAR(60) NOT NULL,
+    loginId VARCHAR(256) NOT NULL,
+    loginPw VARCHAR(256) NOT NULL,
     authLevel SMALLINT(2) UNSIGNED DEFAULT 3 COMMENT '권한레벨(3=일반,7=관리자)',
-    `name` CHAR(20) NOT NULL,
-    nickname CHAR(20) NOT NULL,
-    cellphoneNo CHAR(20) NOT NULL,
-    email CHAR(50) NOT NULL,
+    `name` VARCHAR(256) NOT NULL,
+    nickname VARCHAR(256) NOT NULL,
+    cellphoneNo VARCHAR(256) NOT NULL,
+    email VARCHAR(256) NOT NULL,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부(0=탈퇴전,1=탈퇴)',
     delDate DATETIME COMMENT '탈퇴날짜'
 );
@@ -126,3 +126,9 @@ title = '무제 2',
 result = '<h1>내용2</h1>',
 typeCode = 'common',
 type2Code = 'markdown';
+
+SELECT * FROM `member`;
+
+SELECT LENGTH('8833cb57eb821d629899ba0015aec1aa8efc7c2472f0590bedd1cebe28107cd6');
+
+DESC MEMBER

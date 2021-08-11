@@ -2,18 +2,50 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{usr/common/layout}">
 
+
+
 <head>
     <title>회원가입</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script>
+
+
+let MemberJoin__submitFormDone = false;
+function MemberJoin__submitForm(form) {
+    if ( MemberJoin__submitFormDone ) {
+        return;
+    }
+
+    if ( form.loginPwInput.value.length == 0 ) {
+        alert('로그인비밀번호을 입력하시오 쿠헤헤헤헤ㅔ');
+        form.loginPwInput.focus();
+        return;
+    }
+
+
+    form.loginPw.value = sha256(form.loginPwInput.value);
+    form.loginPwInput.value = '';
+    form.loginPwConfirm.value = '';
+    form.submit();
+    MemberJoin__submitFormDone = true;
+}
+</script>
+
 </head>
+
+
 
 <main layout:fragment="main">
     <section class="section section-login h-full flex items-center justify-center">
 
         <div class="flex-grow max-w-md px-3">
-            <h1>Sign up</h1>
-            <form action="/member/doJoin" method="POST" class="flex flex-col">
-                <input type="hidden" name="replaceUri" th:value="${param.afterLoginUri}">
 
+            <a href="#" onclick="tlqkf(); return false;">쿨럭쿨럭</a>
+
+            <h1>Sign up</h1>
+            <form action="/member/doJoin" method="POST" class="flex flex-col" onsubmit="MemberJoin__submitForm(this); return false;">
+                <input type="hidden" name="replaceUri" th:value="${param.afterLoginUri}">
+                <input type="hidden" name="loginPw">
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text">Username</span>
@@ -25,7 +57,7 @@
                     <label class="label">
                         <span class="label-text">Password</span>
                     </label>
-                    <input type="password" name="loginPw" placeholder="password" class="input input-bordered">
+                    <input type="password" name="loginPwInput" placeholder="password" class="input input-bordered">
                 </div>
 
                 <div class="btns">

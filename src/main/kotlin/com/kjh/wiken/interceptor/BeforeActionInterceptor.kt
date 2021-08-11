@@ -7,6 +7,9 @@ import org.springframework.web.servlet.HandlerInterceptor
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+
+
+//qweqwewqeqwewq
 // 역할 : 모든 액션이 실행되기 전에 필요한 사전준비작업을 수행하기에 적절한 곳
 // 주의 : MyWebMvcConfigurer 에서 세팅되지 않으면, 이 클래스는 작동되지 않는다.
 @Component
