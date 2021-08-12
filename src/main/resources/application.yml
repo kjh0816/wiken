@@ -3,7 +3,7 @@ spring:
     active: local # default가 local
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:log4jdbc:mariadb://127.0.0.1:3306/wikenDevelopment?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull
+    url: jdbc:log4jdbc:mariadb://127.0.0.1:3306/peacesystembuild?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull
     username: sbsst
     password: sbs123414
   session:
